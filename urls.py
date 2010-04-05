@@ -12,4 +12,6 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
     #(r'^(.*)', admin.site.root),
     (r'^media/(.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+	#(r'^(.*)', admin.site.root),
+	(r'^$', 'django.views.generic.simple.redirect_to', {'url':'/admin/'})
 )
