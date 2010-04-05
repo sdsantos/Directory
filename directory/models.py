@@ -46,6 +46,9 @@ class Person(models.Model):
     company = models.ForeignKey(Company)
     position = models.CharField('cargo', max_length=200)
     email = models.EmailField(null=True, blank=True)
+    website = models.URLField(verify_exists=True, null=True, blank=True)
+    twitter = models.CharField('Twitter username',max_length=30,null=True, blank=True)
+    linkedin = models.EmailField('LinkedIn URL',null=True, blank=True)
     
     def __unicode__(self):
         return u'%s' % self.name
