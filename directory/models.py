@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-from django.contrib import admin
 from tagging.fields import TagField
 from tagging.models import Tag
-
-# COMPANY
 
 class Company(models.Model):
     name = models.CharField('nome da empresa', max_length=200)
@@ -31,15 +28,6 @@ class Company(models.Model):
     class Meta:
         verbose_name = 'empresa'
     
-class CompanyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'website', 'year')
-    search_fields = ('name', 'description')
-    
-    class Media:
-        js = ("js/gmapselect.js",)
-admin.site.register(Company, CompanyAdmin)    
-    
-# PERSON
     
 class Person(models.Model):
     name = models.CharField('nome', max_length=200)
@@ -55,9 +43,3 @@ class Person(models.Model):
     
     class Meta:
         verbose_name = 'pessoa'
-    
-class PersonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'position', 'company')
-    search_fields = ('name', 'position', 'company')
-    
-admin.site.register(Person, PersonAdmin) 
