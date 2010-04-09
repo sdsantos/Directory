@@ -25,7 +25,7 @@ LANGUAGE_CODE = 'pt-pt' # http://www.i18nguy.com/unicode/language-identifiers.ht
 SITE_ID = 1
 USE_I18N = True
 
-GOOGLE_KEY = 'ABQIAAAAtH2OpEQh5kqLXXFWWEtfehRWSFp2nd3Lg-QddyDTLHKQZvghPhS4Y_TmtPskIKjvEgUlC3LLzsi-HQ'
+GOOGLE_KEY = 'ABQIAAAAtH2OpEQh5kqLXXFWWEtfehTl9j_UXDHp5ClTzN5bnExEyQ7YVxSATpB8VYuSg9gWWGlsDbaf8cUNdg'
 
 MEDIA_ROOT = relative('media/')
 MEDIA_URL = '/media/'
