@@ -30,7 +30,7 @@
 	map.addControl(new GSmallZoomControl());
     map.addControl(new GMapTypeControl());
     map.setCenter(new google.maps.LatLng(40.20614809577503, -8.41552734375), 12);
-	
+
 	var companies = [
 		{% for company in companies %}
 			{ 'id':{{company.id}}, 
@@ -41,8 +41,8 @@
 		{% endfor %}
 	];
 	
-	for (i in companies)
-  	{
+	for (var i=0; i<companies.length; i++) {
+		alert(i);
 		var marker = new GMarker(new google.maps.LatLng(companies[i].latitude, companies[i].longitude));
 		marker.company = companies[i];
 		map.addOverlay(marker);
