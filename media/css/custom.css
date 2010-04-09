@@ -1,0 +1,58 @@
+body {
+	font-family: georgia, serif;
+}
+
+a:link, a:active , a:visited {
+	color: black;
+}
+
+a:hover {
+	color: gray;
+}
+
+h1 {
+	font-size: 3em;
+	margin: 20px 0px;
+}
+
+h2 {
+	margin: 20px 0px 0px 0px;
+}
+
+div#header {
+	text-align: center;
+}
+
+div#map {
+	height: 398px;
+	border: 1px black solid;
+}
+
+div#companies p {
+	text-align: justify;
+}
+
+div#companies ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+div#companies li {
+	display: inline;
+	list-style-type: none;
+	margin-right: 4px;
+}
+
+div#footer {
+	text-align: center;
+	margin-top: 40px;
+	height: 40px;
+}
+
+div#footer a{
+	text-decoration: none;
+}
+
+div#footer img {
+	vertical-align: middle;
+}

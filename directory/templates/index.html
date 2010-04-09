@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <div class="clear span-24 last" id="map"></div>
+  
+  <div class="clear span-12" id="about">
+	<h2>About</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt hendrerit erat et venenatis. Nunc sem diam, dictum at malesuada vitae, placerat non nulla. Sed massa nibh, dictum sit amet posuere ut, aliquet sed turpis. Duis aliquam adipiscing consequat. Aliquam pharetra congue sollicitudin. Sed hendrerit vestibulum nibh, eu condimentum justo fermentum sed. Aenean quis viverra urna. Suspendisse potenti. Nulla volutpat congue purus, non posuere lacus ornare eget. Nam in ipsum lacus, sed consectetur libero. Maecenas quis interdum justo.</p></div>
+  <div class="span-12 last" id="companies">
+	<h2>Companies ({{companies|length}})</h2>
+	<ul>
+		{% for company in companies %}
+			<li><a href="#">{{ company.name }}</a></li>
+		{% endfor %}
+	</ul>
+  </div>
+  
+{% endblock %}
+
+{% block end_scripts %}
+
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABCDEFG"></script>
+<script type="text/javascript">
+  google.load("maps", "2.x");
+   
+  // Call this function when the page has been loaded
+  function initialize() {
+    var map = new google.maps.Map2(document.getElementById("map"));
+	map.addControl(new GSmallZoomControl());
+    map.addControl(new GMapTypeControl());
+    map.setCenter(new google.maps.LatLng(40.20614809577503, -8.41552734375), 12);
+	
+	var companies = [
+		{% for company in companies %}
+			{ 'id':{{company.id}}, 
+			  'name':'{{company.name}}', 
+			  'latitude':{{company.map_lat}}, 
+			  'longitude':{{company.map_lon}} }
+			{% if not forloop.last %},{% endif %}
+		{% endfor %}
+	];
+	
+	for (i in companies)
+  	{
+		var marker = new GMarker(new google.maps.LatLng(companies[i].latitude, companies[i].longitude));
+		marker.company = companies[i];
+		map.addOverlay(marker);
+		GEvent.addListener(marker, "click", function() {this.openInfoWindowHtml(this.company.name);});
+  	}
+  }
+  google.setOnLoadCallback(initialize);
+</script>
+
+{% endblock %}
