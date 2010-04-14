@@ -24,6 +24,9 @@
 <script type="text/javascript">
   google.load("maps", "2.x");
    
+
+ 
+   
   // Call this function when the page has been loaded
   function initialize() {
     var map = new google.maps.Map2(document.getElementById("map"));
@@ -35,19 +38,32 @@
 		{% for company in companies %}
 			{ 'id':{{company.id}}, 
 			  'name':'{{company.name}}', 
+			  'logo':'{{company.logo}}', 
+			  'website':'{{company.website}}', 
 			  'latitude':{{company.map_lat}}, 
 			  'longitude':{{company.map_lon}} }
 			{% if not forloop.last %},{% endif %}
 		{% endfor %}
 	];
 	
+	var ineoIcon = new GIcon();
+	ineoIcon.image = {{MEDIA_URL}} + 'images/ineo_marker.png';
+	ineoIcon.shadow = "";
+	ineoIcon.iconSize = new GSize(20, 23);
+	ineoIcon.iconAnchor = new GPoint(6, 20);
+	ineoIcon.infoWindowAnchor = new GPoint(5, 1);
+	// Set up our GMarkerOptions object literal
+	var markerOptions = { icon:ineoIcon };
+	
 	for (var i=0; i<companies.length; i++) {
-		alert(i);
-		var marker = new GMarker(new google.maps.LatLng(companies[i].latitude, companies[i].longitude));
+		var marker = new GMarker(new google.maps.LatLng(companies[i].latitude, companies[i].longitude), markerOptions);
 		marker.company = companies[i];
 		map.addOverlay(marker);
-		GEvent.addListener(marker, "click", function() {this.openInfoWindowHtml(this.company.name);});
+		GEvent.addListener(marker, "click", function() {this.openInfoWindowHtml(companyWindowHtml(this.company));});
   	}
+  }
+  function companyWindowHtml(company) {
+  	return '<a href="' + company.website + '"><img src="{{MEDIA_URL}}' + company.logo + '" /><h4>' + company.name + '</h4></a>';
   }
   google.setOnLoadCallback(initialize);
 </script>
