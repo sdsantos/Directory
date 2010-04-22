@@ -8,6 +8,9 @@ class Company(models.Model):
     name = models.CharField('nome da empresa', max_length=200)
     logo = models.ImageField(upload_to='logos',verbose_name='logótipo', blank=True, null=True)
     description = models.TextField('descrição', blank=True, null=True)
+
+    approved = models.BooleanField('aprovado', default=False)
+    
     website = models.URLField(verify_exists=True, blank=True, null=True)
     email = models.EmailField(null=True, blank=True)
     address = models.TextField('address', blank=True, null=True)
