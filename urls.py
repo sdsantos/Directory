@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 	# And add 'django.contrib.admindocs' to INSTALLED_APPS
     
     (r'^admin/(.*)', admin.site.root),
+	(r'^submit', 'directory.views.submit'),
     (r'^media/(.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	url(r'^$', 'directory.views.index', name='index'),
 )
