@@ -11,7 +11,9 @@
 	<h2>Companies ({{companies|length}})</h2>
 	<ul>
 		{% for company in companies %}
-			<li><a href="#">{{ company.name }}</a></li>
+			{% if company.approved %}
+				<li><a href="#">{{ company.name }}</a></li>
+			{% endif %}
 		{% endfor %}
 	</ul>
   </div>
