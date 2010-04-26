@@ -1,9 +1,54 @@
-
+<link rel="stylesheet" href="{{MEDIA_URL}}css/screen.css" type="text/css" media="screen, projection"/>
+<link rel="stylesheet" href="{{MEDIA_URL}}css/print.css" type="text/css" media="print"/>
+<!--[if lt IE 8]><link rel="stylesheet" href="{{MEDIA_URL}}css/ie.css" type="text/css" media="screen, projection"/><![endif]-->
+<link rel="stylesheet" href="{{MEDIA_URL}}css/custom.css" type="text/css" media="screen, projection"/>
 
 <div class="clear span-12" id="about">
 	<h2>Submit New Company</h2>
 		<form method="post">
 		{{ form.as_p }}
+		
+		{% block end_scripts %}
+		<script type="text/javascript" src="http://www.google.com/jsapi?key=ABCDEFG"></script>
+		<script type="text/javascript">
+			google.load("maps", "2.x");
+		   		   
+			// Call this function when the page has been loaded
+			function initialize() {
+				var map = new google.maps.Map2(document.getElementById("map"));
+				map.addControl(new GSmallZoomControl());
+				map.addControl(new GMapTypeControl());
+				map.setCenter(new google.maps.LatLng(40.20614809577503, -8.41552734375), 12);
+				
+				var ineoIcon = new GIcon();
+				ineoIcon.image = {{MEDIA_URL}} + 'images/ineo_marker.png';
+				ineoIcon.shadow = "";
+				ineoIcon.iconSize = new GSize(20, 23);
+				ineoIcon.iconAnchor = new GPoint(6, 20);
+				ineoIcon.infoWindowAnchor = new GPoint(5, 1);
+				// Set up our GMarkerOptions object literal
+				var markerOptions = { icon:ineoIcon };
+				
+				GEvent.addListener(map, "move", function() 
+				{
+					point = map.getCenter();
+					document.getElementById('id_map_lat').value = point.lat()
+					document.getElementById('id_map_lon').value = point.lng()
+					marker.setPoint(point);
+				});
+				GEvent.addListener(marker, "dragend", function()
+				{
+					point = marker.getPoint();
+					document.getElementById('id_map_lat').value = point.lat()
+					document.getElementById('id_map_lon').value = point.lng()
+					map.panTo(point);
+				});
+			}
+			google.setOnLoadCallback(initialize);
+		</script>
+		
+		{% endblock %}
+		
 		<input type="submit" value="Submit" />
 		</form>
 </div>

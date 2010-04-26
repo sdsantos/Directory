@@ -14,20 +14,7 @@ def submit(request):
 	form = CompanyForm(request.POST)
 	
 	if(form.is_valid()):
-	    newCompany = Company(
-		name = form.cleaned_data['name'],
-		logo = form.cleaned_data['logo'],
-		description = form.cleaned_data['description'],
-		website = form.cleaned_data['website'],
-		email = form.cleaned_data['email'],
-		address = form.cleaned_data['address'],
-		phone = form.cleaned_data['phone'],
-		year = form.cleaned_data['year'],
-		map_lat = form.cleaned_data['map_lat'],
-		map_lon = form.cleaned_data['map_lon'],
-		tags = form.cleaned_data['tags'],	    
-	    )
-	    newCompany.save()
+	    newCompany = form.save()
     
 	    return HttpResponseRedirect('/../')
     else:
