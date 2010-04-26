@@ -8,5 +8,5 @@ class CompanyForm(ModelForm):
     class Meta:
         model = Company
         exclude = ('approved',)
-    
+        
     captcha = CaptchaField()
