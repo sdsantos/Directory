@@ -14,3 +14,7 @@ urlpatterns = patterns('',
     (r'^media/(.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	url(r'^$', 'directory.views.index', name='index'),
 )
+
+urlpatterns += patterns('',
+    url(r'^captcha/', include('captcha.urls')),
+)

@@ -12,6 +12,7 @@ def index(request):
 def submit(request):
     if request.method == 'POST':
 	form = CompanyForm(request.POST)
+	
 	if(form.is_valid()):
 	    newCompany = Company(
 		name = form.cleaned_data['name'],
