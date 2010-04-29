@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 
+
+
 {% block body %}
+<div class="clear span-12" id="notifications">
+	{% if notifications %}
+		<ul class="notifications">
+			{% for message in notifications %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</div>
+	
   <div class="clear span-24 last" id="map"></div>
   
   <div class="clear span-12" id="about">

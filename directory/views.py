@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Create your views here.
 from directory.models import *
 from directory.utils import *
@@ -16,6 +18,7 @@ def submit(request):
 	
 	if(form.is_valid()):
 	    newCompany = form.save()
+	    request.notifications.success('Empresa submetida para aprovação com sucesso!')
 	    return HttpResponseRedirect('/../')
     else:
 	form = CompanyForm()
