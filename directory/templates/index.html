@@ -22,7 +22,7 @@
 	<h2>Companies ({{companies|length}})</h2>
 	<ul>
 		{% for company in companies %}
-				<li><a href="#">{{ company.name }}</a></li>
+				<li><a href="#" onClick="changeMap(37.4569,37.4569)">{{ company.name }}</a> </li>
 		{% endfor %}
 	</ul>
   </div>
@@ -39,13 +39,11 @@
 <script type="text/javascript" src="http://www.google.com/jsapi?key=ABCDEFG"></script>
 <script type="text/javascript">
   google.load("maps", "2.x");
-   
-
- 
-   
+  var map;
+  
   // Call this function when the page has been loaded
   function initialize() {
-    var map = new google.maps.Map2(document.getElementById("map"));
+    map = new google.maps.Map2(document.getElementById("map"));
 	map.addControl(new GSmallZoomControl());
     map.addControl(new GMapTypeControl());
     map.setCenter(new google.maps.LatLng(40.20614809577503, -8.41552734375), 12);
@@ -75,12 +73,24 @@
 		var marker = new GMarker(new google.maps.LatLng(companies[i].latitude, companies[i].longitude), markerOptions);
 		marker.company = companies[i];
 		map.addOverlay(marker);
-		GEvent.addListener(marker, "click", function() {this.openInfoWindowHtml(companyWindowHtml(this.company));});
+		GEvent.addListener(marker, "click", function() 
+			{
+				this.openInfoWindowHtml(companyWindowHtml(this.company));
+			}
+		);
   	}
   }
+  
   function companyWindowHtml(company) {
   	return '<a href="' + company.website + '"><img src="{{MEDIA_URL}}' + company.logo + '" /><h4>' + company.name + '</h4></a>';
   }
+  
+  function changeMap(latitude, longitude)
+  {
+	window.open("win1.html");
+	map.panTo(new GLatLng(latitude, longitude));
+  }
+  
   google.setOnLoadCallback(initialize);
 </script>
 
