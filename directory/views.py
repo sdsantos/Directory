@@ -18,7 +18,7 @@ def submit(request):
 	
 	if(form.is_valid()):
 	    newCompany = form.save()
-	    request.notifications.success('Empresa submetida para aprovação com sucesso!')
+	    request.notifications.success('Empresa submetida para aprovação.')
 	    return HttpResponseRedirect('/../')
     else:
 	form = CompanyForm()

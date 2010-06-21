@@ -13,7 +13,7 @@ class Company(models.Model):
     
     website = models.URLField(verify_exists=True, blank=True, null=True)
     email = models.EmailField(null=True, blank=True)
-    address = models.TextField('address', blank=True, null=True)
+    address = models.TextField('morada', blank=True, null=True)
     phone = models.CharField('telefone', max_length=20, blank=True, null=True)
     year = models.CharField('ano de fundação', max_length=4, blank=True, null=True)
     

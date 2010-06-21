@@ -3,34 +3,34 @@
 
 
 {% block body %}
-<div class="clear span-12" id="notifications">
+<div class="clear span-24 last" id="notifications">
 	{% if notifications %}
 		<ul class="notifications">
 			{% for message in notifications %}
-			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			<li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
 			{% endfor %}
 		</ul>
 	{% endif %}
 </div>
 	
-  <div class="clear span-24 last" id="map"></div>
-  
-  <div class="clear span-12" id="about">
+<div class="clear span-24 last" id="map"></div>
+
+<div class="clear span-12" id="about">
 	<h2>About</h2>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt hendrerit erat et venenatis. Nunc sem diam, dictum at malesuada vitae, placerat non nulla. Sed massa nibh, dictum sit amet posuere ut, aliquet sed turpis. Duis aliquam adipiscing consequat. Aliquam pharetra congue sollicitudin. Sed hendrerit vestibulum nibh, eu condimentum justo fermentum sed. Aenean quis viverra urna. Suspendisse potenti. Nulla volutpat congue purus, non posuere lacus ornare eget. Nam in ipsum lacus, sed consectetur libero. Maecenas quis interdum justo.</p></div>
-  <div class="span-12 last" id="companies">
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt hendrerit erat et venenatis. Nunc sem diam, dictum at malesuada vitae, placerat non nulla. Sed massa nibh, dictum sit amet posuere ut, aliquet sed turpis. Duis aliquam adipiscing consequat. Aliquam pharetra congue sollicitudin. Sed hendrerit vestibulum nibh, eu condimentum justo fermentum sed. Aenean quis viverra urna. Suspendisse potenti. Nulla volutpat congue purus, non posuere lacus ornare eget. Nam in ipsum lacus, sed consectetur libero. Maecenas quis interdum justo.</p>
+</div>
+
+<div class="span-12 last" id="companies">
 	<h2>Companies ({{companies|length}})</h2>
 	<ul>
 		{% for company in companies %}
-				<li><a href="#">{{ company.name }}</a></li>
+			<li><a href="#">{{ company.name }}</a></li>
 		{% endfor %}
 	</ul>
-  </div>
-  
-  <div class="span-12 last" id="submit">
+	
 	<h2>Submit New Company</h2>
-	<p>Submit new company <A href="../submit/">here</A></p>
-  </div>
+	<p>Submit new company <a href="../submit/">here</a></p>
+</div>
   
 {% endblock %}
 
@@ -39,10 +39,7 @@
 <script type="text/javascript" src="http://www.google.com/jsapi?key=ABCDEFG"></script>
 <script type="text/javascript">
   google.load("maps", "2.x");
-   
-
- 
-   
+      
   // Call this function when the page has been loaded
   function initialize() {
     var map = new google.maps.Map2(document.getElementById("map"));

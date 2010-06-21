@@ -1,22 +1,36 @@
 body {
 	font-family: georgia, serif;
+	background: #00518F url(http://ineo.pt/wp-content/themes/small-magazine/small-magazine/images/ineo-back.png) top center repeat-x;
+	color: white;
+	text-shadow: #000 -1px -1px 1px;
 }
 
 a:link, a:active , a:visited {
-	color: black;
+	border-bottom: 1px dotted #FFF;
+	color: white;
+	text-decoration: none;
 }
 
 a:hover {
-	color: gray;
+	border-bottom: 1px dotted #9eeefc;
+	color: #9eeefc;
+}
+
+a.image {
+	border-bottom: 0px;
+}
+
+h1, h2 {
+	color: white;
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 4em;
 	margin: 20px 0px;
 }
 
 h2 {
-	margin: 20px 0px 0px 0px;
+	margin: 20px 0px 10px 0px;
 }
 
 div#header {
@@ -25,7 +39,11 @@ div#header {
 
 div#map {
 	height: 398px;
-	border: 1px black solid;
+	border: 8px white solid;
+	-moz-box-shadow: 0px 0px 5px #000;
+	-webkit-box-shadow: 0px 0px 5px #000;
+	box-shadow: 0px 0px 5px #000;
+	text-shadow: #000 0px 0px 0px;
 }
 
 div#companies p {
@@ -55,4 +73,45 @@ div#footer a{
 
 div#footer img {
 	vertical-align: middle;
+}
+
+form, form table {
+	width: 800px;
+}
+
+form th {
+	text-align: right;
+	width: 160px;
+}
+
+div#submit input {
+	margin: 10px;
+	padding: 6px;
+	font-size: 18px;
+}
+
+div#submit {
+	text-align: center;
+}
+
+ul.errorlist {
+	list-style-type: none;
+	text-shadow: 0px 0px 0px #d20000;
+	margin: 0px;
+	color: #d20000;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+ul.notifications li.success {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	background: none;
+	list-style-type: none;
+	text-align: center;
+	color: green;
+	text-shadow: 0px 0px 0px #d20000;
+	font-weight: bold;
+	font-family: sans-serif;
 }
