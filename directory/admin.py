@@ -2,7 +2,8 @@ from django.contrib import admin
 from models import *
 
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'website', 'year')
+    list_display = ('name', 'website', 'year', 'approved')
+    list_editable = ('approved',)
     search_fields = ('name', 'description')
     
     class Media:
