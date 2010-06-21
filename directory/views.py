@@ -9,7 +9,6 @@ from django.http import HttpResponseRedirect
 
 def index(request):
     companies = Company.objects.filter(approved='True').order_by('?')
-    
     return render(request,'index.html',{'companies':companies})
     
 def submit(request):
