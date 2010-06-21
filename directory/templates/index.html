@@ -27,9 +27,8 @@
 			<li><a href="#" onClick="changeMap({{company.id}})">{{ company.name }}</a> </li>
 		{% endfor %}
 	</ul>
-	
-	<h2>Submit New Company</h2>
-	<p>Submit new company <a href="../submit/">here</a></p>
+	<p></p>
+	<p><a href="{% url submit-company %}">Submit a new company</a></p>
 </div>
   
 {% endblock %}
