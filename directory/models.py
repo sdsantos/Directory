@@ -5,17 +5,17 @@ from tagging.fields import TagField
 from tagging.models import Tag
 
 class Company(models.Model):
-    name = models.CharField('nome da empresa', max_length=200)
-    logo = models.ImageField(upload_to='logos',verbose_name='logótipo', blank=True, null=True)
-    description = models.TextField('descrição', blank=True, null=True)
+    name = models.CharField('Company name', max_length=200)
+    logo = models.ImageField(upload_to='logos', blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
-    approved = models.BooleanField('aprovado', default=False)
+    approved = models.BooleanField(default=False)
     
     website = models.URLField(verify_exists=True, blank=True, null=True)
     email = models.EmailField(null=True, blank=True)
-    address = models.TextField('morada', blank=True, null=True)
-    phone = models.CharField('telefone', max_length=20, blank=True, null=True)
-    year = models.CharField('ano de fundação', max_length=4, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    year = models.CharField('foundation year', max_length=4, blank=True, null=True)
     
     map_lat = models.DecimalField('latitude',max_digits=20, decimal_places=15, blank=True, null=True)
     map_lon = models.DecimalField('longitude', max_digits=20, decimal_places=15, blank=True, null=True)
@@ -28,14 +28,10 @@ class Company(models.Model):
     def __unicode__(self):
         return u'%s' % self.name
     
-    class Meta:
-        verbose_name = 'empresa'
-    
-    
 class Person(models.Model):
-    name = models.CharField('nome', max_length=200)
+    name = models.CharField(max_length=200)
     company = models.ForeignKey(Company)
-    position = models.CharField('cargo', max_length=200)
+    position = models.CharField(max_length=200)
     email = models.EmailField(null=True, blank=True)
     website = models.URLField(verify_exists=True, null=True, blank=True)
     twitter = models.CharField('Twitter username',max_length=30,null=True, blank=True)
@@ -44,5 +40,3 @@ class Person(models.Model):
     def __unicode__(self):
         return u'%s' % self.name
     
-    class Meta:
-        verbose_name = 'pessoa'
