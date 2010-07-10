@@ -64,6 +64,8 @@
 		{% for company in companies %}
 			{ 'id':{{company.id}}, 
 			  'name':'{{company.name}}', 
+			  'description':'{{company.description}}',
+			  'tags':'{{company.tags}}',
 			  'logo':'{{company.logo}}', 
 			  'website':'{{company.website}}', 
 			  'latitude':{{company.map_lat}}, 
@@ -98,7 +100,27 @@
 	if (company.logo) {
 		output += '<img src="{{MEDIA_URL}}' + company.logo + '" style="max-width: 200px; max-height: 70px;" />';
 	}
-	output += '<h4>' + company.name + '</h4></a></div>';
+	output += '<h4>' + company.name + '</h4>';
+
+	if(company.website)
+	{
+		output += '<h4>' + company.website + '</h4>';
+	}
+	output += '</a>';
+
+	if(company.description)
+	{
+		output += '<h4 style="font-size:75%">' + company.description + '</h4>';
+	}
+
+	if(company.tags)
+	{
+		output += '<h4>' + 'Tags' + '</h4>';
+		output += '<h4 style="font-size:75%">' + company.tags + '</h4>';
+	}
+
+	output += '</div>';
+
   	return output;
   }
   
