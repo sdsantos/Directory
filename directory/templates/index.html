@@ -96,30 +96,30 @@
   }
   
   function companyWindowHtml(company) {
-  	var output = '<div style="width:220px; height:120px; overflow:auto; text-align: center;"><a href="' + company.website + '">';
+  	var output = '<div style="width:300px; height:200px; overflow:auto; text-align: center;"><a href="' + company.website + '">';
 	if (company.logo) {
 		output += '<img src="{{MEDIA_URL}}' + company.logo + '" style="max-width: 200px; max-height: 70px;" />';
 	}
-	output += '<h4>' + company.name + '</h4>';
+	output += '<h4>' + company.name;
 
 	if(company.website)
 	{
-		output += '<h4>' + company.website + '</h4>';
+		output += '<p>' + company.website + '</p>';
 	}
-	output += '</a>';
+	output += '</h4></a><h4>';
 
 	if(company.description)
 	{
-		output += '<h4 style="font-size:75%">' + company.description + '</h4>';
+		output += '<p style="font-size:75%">' + company.description + '</p>';
 	}
 
 	if(company.tags)
 	{
-		output += '<h4>' + 'Tags' + '</h4>';
-		output += '<h4 style="font-size:75%">' + company.tags + '</h4>';
+		output += '<p>' + 'Tags' + '</p>';
+		output += '<p style="font-size:75%">' + company.tags + '</p>';
 	}
 
-	output += '</div>';
+	output += '</h4></div>';
 
   	return output;
   }
