@@ -114,3 +114,15 @@ ul.notifications li.success {
 	font-weight: bold;
 	font-family: sans-serif;
 }
+
+div.ballon {
+	width:300px; 
+	height:200px; 
+	overflow:auto; 
+	color: black; 
+	text-align: center;
+}
+
+div.ballon p {
+	font-size: 12px;
+}
