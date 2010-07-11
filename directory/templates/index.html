@@ -96,30 +96,29 @@
   }
   
   function companyWindowHtml(company) {
-  	var output = '<div style="width:300px; height:200px; overflow:auto; text-align: center;"><a href="' + company.website + '">';
+  	var output = '<div style="width:300px; height:200px; overflow:auto; color: black; text-align: center;">';
+	
+	if (company.website) {
+		output += '<a href="' + company.website + '" target="_blank">';
+	}
+	
 	if (company.logo) {
 		output += '<img src="{{MEDIA_URL}}' + company.logo + '" style="max-width: 200px; max-height: 70px;" />';
 	}
-	output += '<h4>' + company.name;
+	output += '<h4>' + company.name + '</h4>';
+	
+	if (company.website) { output += '</a>'; }
 
-	if(company.website)
-	{
-		output += '<p>' + company.website + '</p>';
+	output += '<p style="text-align: left;">';
+	
+	if(company.description)	{
+		output += company.description + ' ';
 	}
-	output += '</h4></a><h4>';
-
-	if(company.description)
-	{
-		output += '<p style="font-size:75%">' + company.description + '</p>';
-	}
-
-	if(company.tags)
-	{
-		output += '<p>' + 'Tags' + '</p>';
-		output += '<p style="font-size:75%">' + company.tags + '</p>';
+	if(company.tags) {
+		output += '<b>Tags:</b> ' + company.tags;
 	}
 
-	output += '</h4></div>';
+	output += '</p></div>';
 
   	return output;
   }
