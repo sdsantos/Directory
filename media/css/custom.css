@@ -117,10 +117,15 @@ ul.notifications li.success {
 
 div.ballon {
 	width:300px; 
-	height:200px; 
+	min-height:100px; 
 	overflow:auto; 
 	color: black; 
 	text-align: center;
+	font-family: arial, tahoma, sans-serif;
+}
+
+div.ballon img {
+	margin-bottom: 16px;
 }
 
 div.ballon p {

@@ -53,13 +53,14 @@
   	var output = '<div class="ballon">';
 	
 	if (company.website) {
-		output += '<a href="' + company.website + '" target="_blank">';
+		output += '<a href="' + company.website + '" target="_blank" title="' + company.name + '">';
 	}
 	
 	if (company.logo) {
-		output += '<img src="{{MEDIA_URL}}' + company.logo + '" style="max-width: 200px; max-height: 70px;" />';
+		output += '<img src="{{MEDIA_URL}}' + company.logo + '" style="max-width: 200px; max-height: 70px;" alt="' + company.name + '" />';
+	} else {
+		output += '<h4>' + company.name + '</h4>';
 	}
-	output += '<h4>' + company.name + '</h4>';
 	
 	if (company.website) { output += '</a>'; }
 
