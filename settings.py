@@ -27,6 +27,8 @@ USE_I18N = True
 
 GOOGLE_KEY = 'ABQIAAAAtH2OpEQh5kqLXXFWWEtfehTl9j_UXDHp5ClTzN5bnExEyQ7YVxSATpB8VYuSg9gWWGlsDbaf8cUNdg'
 
+EDITOR_FEED_URL = 'editor'
+
 MEDIA_ROOT = relative('media/')
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
