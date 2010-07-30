@@ -49,6 +49,43 @@
   var map;
   var companies;
   
+  function companyWindowHtml(company) {
+  	var output = '<div class="ballon">';
+	
+	if (company.website) {
+		output += '<a href="' + company.website + '" target="_blank">';
+	}
+	
+	if (company.logo) {
+		output += '<img src="{{MEDIA_URL}}' + company.logo + '" style="max-width: 200px; max-height: 70px;" />';
+	}
+	output += '<h4>' + company.name + '</h4>';
+	
+	if (company.website) { output += '</a>'; }
+
+	output += '<p style="text-align: left;">';
+	
+	if(company.description)	{
+		output += company.description + ' ';
+	}
+	if(company.tags) {
+		output += '<b>Tags:</b> ' + company.tags;
+	}
+
+	output += '</p></div>';
+
+  	return output;
+  }
+  
+  function changeMap(company_id) {
+	for (var i=0; i<companies.length; i++) {
+		if (companies[i].id == company_id) {
+			map.panTo(new GLatLng(companies[i].latitude,companies[i].longitude));
+			companies[i].marker.openInfoWindowHtml(companyWindowHtml(companies[i]));
+		}
+	}
+  }  
+  
   // Call this function when the page has been loaded
   function initialize() {
     map = new google.maps.Map2(document.getElementById("map"));
@@ -89,46 +126,18 @@
 			}
 		);
   	}
+	
+	{% if company_id %}
+	changeMap({{company_id}});
+	{% endif %}
   }
   
-  function companyWindowHtml(company) {
-  	var output = '<div class="ballon">';
-	
-	if (company.website) {
-		output += '<a href="' + company.website + '" target="_blank">';
-	}
-	
-	if (company.logo) {
-		output += '<img src="{{MEDIA_URL}}' + company.logo + '" style="max-width: 200px; max-height: 70px;" />';
-	}
-	output += '<h4>' + company.name + '</h4>';
-	
-	if (company.website) { output += '</a>'; }
 
-	output += '<p style="text-align: left;">';
-	
-	if(company.description)	{
-		output += company.description + ' ';
-	}
-	if(company.tags) {
-		output += '<b>Tags:</b> ' + company.tags;
-	}
-
-	output += '</p></div>';
-
-  	return output;
-  }
-  
-  function changeMap(company_id) {
-	for (var i=0; i<companies.length; i++) {
-		if (companies[i].id == company_id) {
-			map.panTo(new GLatLng(companies[i].latitude,companies[i].longitude));
-			companies[i].marker.openInfoWindowHtml(companyWindowHtml(companies[i]));
-		}
-	}
-  }
   
   google.setOnLoadCallback(initialize);
+  
+
+  
 // -->
 </script>
 
