@@ -8,18 +8,18 @@ from forms import *
 from django.http import HttpResponseRedirect
 
 def index(request):
+    success = 'success' in request.GET and request.GET['success']
     companies = Company.objects.filter(approved='True').order_by('?')
-    return render(request,'index.html',{'companies':companies})
+    return render(request,'index.html',{'companies':companies, 'success':success})
     
 def submit(request):
     if request.method == 'POST':
-	form = CompanyForm(request.POST)
-	
-	if(form.is_valid()):
-	    newCompany = form.save()
-	    request.notifications.success('Empresa submetida para aprovação.')
-	    return HttpResponseRedirect('/../')
+        form = CompanyForm(request.POST)
+        
+        if form.is_valid():
+            newCompany = form.save()
+            return HttpResponseRedirect('/../?success=true')
     else:
-	form = CompanyForm()
+        form = CompanyForm()
     
     return render(request,'submit.html',{'form':form})

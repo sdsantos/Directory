@@ -4,11 +4,9 @@
 
 {% block body %}
 <div class="clear span-24 last" id="notifications">
-	{% if notifications %}
+	{% if success %}
 		<ul class="notifications">
-			{% for message in notifications %}
-			<li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-			{% endfor %}
+			<li class="success">Empresa submetida para aprovação.</li>
 		</ul>
 	{% endif %}
 </div>

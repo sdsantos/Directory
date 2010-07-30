@@ -60,12 +60,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.media',
 	'django.core.context_processors.request',
 	'directory.context_processor.google_key',
-	'django_notify.context_processors.notifications',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django_notify.middleware.NotificationsMiddleware',
 )
