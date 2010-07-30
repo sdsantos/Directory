@@ -97,7 +97,7 @@
 		{% for company in companies %}
 			{ 'id':{{company.id}}, 
 			  'name':'{{company.name}}', 
-			  'description':'{{company.description}}',
+			  'description':'{{company.description|escapejs}}',
 			  'tags':'{{company.tags}}',
 			  'logo':'{{company.logo}}', 
 			  'website':'{{company.website}}', 
