@@ -109,8 +109,8 @@ ul.notifications li.success {
 	background: none;
 	list-style-type: none;
 	text-align: center;
-	color: green;
-	text-shadow: 0px 0px 0px #d20000;
+	color: #1de240;
+	text-shadow: 0px 0px 0px #FFF;
 	font-weight: bold;
 	font-family: sans-serif;
 }
