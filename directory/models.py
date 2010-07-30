@@ -28,6 +28,9 @@ class Company(models.Model):
     def __unicode__(self):
         return u'%s' % self.name
     
+    def get_absolute_url(self):
+        return '/?company=%d' % self.id
+    
 class Person(models.Model):
     name = models.CharField(max_length=200)
     company = models.ForeignKey(Company)
